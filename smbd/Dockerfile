@@ -1,5 +1,6 @@
 FROM ubuntu:20.04
 
+# hadolint ignore=DL3008
 RUN set -eux \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
