@@ -17,9 +17,9 @@ jobs:
     strategy:
       matrix:
         config:
-          - name: join
-          - name: smbd
-          - name: winbind
+          - container_name: join
+          - container_name: smbd
+          - container_name: winbind
     name: Docker Image
     runs-on: ubuntu-latest
     steps:
@@ -33,9 +33,9 @@ jobs:
       #  uses: actions/cache@v2
       #  with:
       #    path: /tmp/.buildx-cache
-      #    key: ${{ runner.os }}-buildx-${{ matrix.config.os }}-${{ github.sha }}
+      #    key: ${{ runner.os }}-buildx-${{ matrix.config.container_name }}-${{ github.sha }}
       #    restore-keys: |
-      #      ${{ runner.os }}-buildx-${{ matrix.config.os }}
+      #      ${{ runner.os }}-buildx-${{ matrix.config.container_name }}
       #- name: Set up QEMU for Multi Arch builds
       #  uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx for Multi Arch builds and Caching
@@ -56,12 +56,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@3a3bb3a81753dc99f090d24ee7e5343838b73a96
         with:
-          images: "ghcr.io/${{ github.repository }}/${{ matrix.config.os }}"
+          images: "ghcr.io/${{ github.repository }}/${{ matrix.config.container_name }}"
 
       - name: Build & Push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./${{ matrix.config.os }}
+          context: ./${{ matrix.config.container_name }}
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
           tags: ${{ steps.meta.outputs.tags }}
