@@ -10,5 +10,5 @@ RUN set -eux \
     && apt-get autoremove --yes \
     && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/usr/sbin/winbindd", "--foreground", "--no-process-group", "--log-stdout"]
+ENTRYPOINT ["/usr/sbin/winbindd", "--foreground", "--no-process-group", "--stdout"]
 CMD []
