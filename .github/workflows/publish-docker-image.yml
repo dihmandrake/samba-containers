@@ -20,7 +20,7 @@ jobs:
           - name: join
           - name: smbd
           - name: winbind
-    name: Build and push Docker image
+    name: Docker Image
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
