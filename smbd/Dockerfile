@@ -7,6 +7,8 @@ RUN set -eux \
         samba \
         # libnss-winbind Required for group resolution in Samba
         libnss-winbind \
+        # For the vfs modules in config
+        samba-vfs-modules \
     && apt-get clean \
     && apt-get clean autoclean \
     && apt-get autoremove --yes \
