@@ -16,5 +16,8 @@ RUN set -eux \
     && sed -i 's/^\(passwd:  *files\)/\1 winbind/' /etc/nsswitch.conf \
     && sed -i 's/^\(group:  *files\)/\1 winbind/' /etc/nsswitch.conf
 
+# The healtcheck is fairly expensive; Do not execute oftens
+HEALTHCHECK --interval=300s --timeout=30s --start-period=5s --retries=3 CMD [ "/usr/bin/smbstatus", "--fast", "--numeric", "--brief" ]
+
 ENTRYPOINT ["/usr/sbin/smbd", "--foreground", "--no-process-group", "--log-stdout"]
 CMD []
