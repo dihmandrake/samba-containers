@@ -1,5 +1,5 @@
 ---
-name: "Syntax and Lint"
+name: "Lint & Syntax"
 
 on: [push]
 
@@ -8,7 +8,8 @@ permissions:
   statuses: write
 
 jobs:
-  Super-Linter:
+  super-linter:
+    name: GitHub Super Linter
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.4
