@@ -12,13 +12,13 @@ jobs:
     name: GitHub Super Linter
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.4.0
-      with:
-        persist-credentials: false
-        fetch-depth: 0
-    - name: GitHub Super Linter
-      uses: github/super-linter/slim@v4.8.6
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        VALIDATE_DOCKERFILE: false  # To many false positives and issues
-        #VALIDATE_DOCKERFILE_HADOLINT: true  # Explicitly enabled to show Dockerfile linting;
+      - uses: actions/checkout@v2.4.0
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: GitHub Super Linter
+        uses: github/super-linter/slim@v4.8.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_DOCKERFILE: false  # To many false positives and issues
+          #VALIDATE_DOCKERFILE_HADOLINT: true  # Explicitly enabled to show Dockerfile linting;
