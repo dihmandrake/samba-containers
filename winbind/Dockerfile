@@ -13,5 +13,5 @@ RUN set -eux \
 # Causes some CPU load. Do not execute too often
 HEALTHCHECK --interval=120s --timeout=10s --start-period=5s --retries=3 CMD [ "/usr/bin/wbinfo", "--ping" ]
 
-ENTRYPOINT ["/usr/sbin/winbindd", "--foreground", "--no-process-group", "--stdout"]
+ENTRYPOINT ["/usr/sbin/winbindd", "--foreground", "--no-process-group", "--debug-stdout"]
 CMD []
