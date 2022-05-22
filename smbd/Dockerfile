@@ -20,5 +20,5 @@ RUN set -eux \
 HEALTHCHECK --interval=300s --timeout=30s --start-period=5s --retries=3 CMD [ "/usr/bin/smbstatus", "--fast", "--numeric", "--brief" ]
 EXPOSE 445/tcp
 
-ENTRYPOINT ["/usr/sbin/smbd", "--foreground", "--no-process-group", "--log-stdout"]
+ENTRYPOINT ["/usr/sbin/smbd", "--foreground", "--no-process-group", "--debug-stdout"]
 CMD []
