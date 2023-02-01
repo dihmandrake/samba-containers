@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:23.04
 
 # hadolint ignore=DL3008
 RUN set -eux \
